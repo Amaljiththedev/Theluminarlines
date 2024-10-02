@@ -13,11 +13,11 @@ interface VideoItem {
 const videoItems: VideoItem[] = [
   {
     id: '1',
-    videoUrl: '/abi.mp4',
+    videoUrl: '/videos/abi.mp4',
   },
   {
     id: '2',
-    videoUrl: '/reels.mp4',
+    videoUrl: '/videos/reels.mp4',
   },
 ];
 
@@ -37,7 +37,7 @@ const ClientVideoSection: React.FC = () => {
           followers="3M Followers"
           text="Luminary lines significantly boosted my online presence, achieving impressive growth across all platforms. Highly recommend!"
           stats={["300 million views generated", "2.19 million YouTube subscribers", "100+ Videos edited"]}
-          avatar="/abij.png" // Updated unique avatar for Abhinav Mahajan Life
+          avatar="/images/abij.png" // Updated unique avatar for Abhinav Mahajan Life
         />
         <VideoCard item={videoItems[0]} />
       </div>
@@ -49,7 +49,7 @@ const ClientVideoSection: React.FC = () => {
           followers="400k Followers"
           text="cWorking with this team has transformed my content strategy and engagement. Highly recommend their services!"
           stats={["100 million+ views generated", "100+ videos edited"]}
-          avatar="/nipun.webP" // Updated unique avatar for Nipun Fitness
+          avatar="/images/nipun.webP" // Updated unique avatar for Nipun Fitness
         />
         <VideoCard item={videoItems[1]} />
       </div>

@@ -12,27 +12,27 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     name: "@abhinavmahajanlife",
-    avatar: "/abij.png",
+    avatar: "/images/abij.png",
     profileUrl: "https://www.instagram.com/abhinavmahajanlife",
   },
   {
     name: "@nipunfitness",
-    avatar: "/nipun.webP",
+    avatar: "/images/nipun.webP",
     profileUrl: "https://www.instagram.com/nipunfitness",
   },
   {
     name: "@ajmal_fitlife",
-    avatar: "/almen.webP",
+    avatar: "/images/almen.webP",
     profileUrl: "https://www.instagram.com/ajmal_fitlife",
   },
   {
     name: "@_triedbutfailed",
-    avatar: "/trie.webP",
+    avatar: "/images/trie.webP",
     profileUrl: "https://www.instagram.com/_triedbutfailed",
   },
   {
     name: "@ashvinshibu",
-    avatar: "/gay.webP",
+    avatar: "/images/g.webP",
     profileUrl: "https://www.youtube.com/@ashvinshibu",
   },
 ];

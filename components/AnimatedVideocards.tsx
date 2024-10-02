@@ -12,10 +12,10 @@ interface VideoItem {
 }
 
 const items: VideoItem[] = [
-  { id: "1", title: "Card 1", subtitle: "Subtitle 1", videoUrl: "reels.mp4", avatarUrl: "/nipun.webP", name: "@nipunfitness" },
-  { id: "2", title: "Card 2", subtitle: "Subtitle 2", videoUrl: "/trie.mp4", avatarUrl: "/trie.webP", name: "@_triedbutfailed" },
-  { id: "3", title: "Card 3", subtitle: "Subtitle 3", videoUrl: "/abhinav.mp4", avatarUrl: "/abij.png", name: "@abhinavmahajanlife" },
-  { id: "4", title: "Card 4", subtitle: "Subtitle 4", videoUrl: "/ash.mp4", avatarUrl: "/gay.webP", name: "@ashvinshibu" },
+  { id: "1", title: "Card 1", subtitle: "Subtitle 1", videoUrl: "/videos/reels.mp4", avatarUrl: "/images/nipun.webP", name: "@nipunfitness" },
+  { id: "2", title: "Card 2", subtitle: "Subtitle 2", videoUrl: "/videos/trie.mp4", avatarUrl: "/images/trie.webP", name: "@_triedbutfailed" },
+  { id: "3", title: "Card 3", subtitle: "Subtitle 3", videoUrl: "/videos/abhinav.mp4", avatarUrl: "/images/abij.png", name: "@abhinavmahajanlife" },
+  { id: "4", title: "Card 4", subtitle: "Subtitle 4", videoUrl: "/videos/ash.mp4", avatarUrl: "/images/g.webP", name: "@ashvinshibu" },
 ];
 
 const AnimatedVideoCards: React.FC = () => {
