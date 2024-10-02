@@ -14,7 +14,7 @@ interface VideoItem {
 const items: VideoItem[] = [
   { id: "1", title: "Card 1", subtitle: "Subtitle 1", videoUrl: "reels.mp4", avatarUrl: "/nipun.webP", name: "@nipunfitness" },
   { id: "2", title: "Card 2", subtitle: "Subtitle 2", videoUrl: "/trie.mp4", avatarUrl: "/trie.webP", name: "@_triedbutfailed" },
-  { id: "3", title: "Card 3", subtitle: "Subtitle 3", videoUrl: "/abhinav.mp4", avatarUrl: "/abinav.webP", name: "@abhinavmahajanlife" },
+  { id: "3", title: "Card 3", subtitle: "Subtitle 3", videoUrl: "/abhinav.mp4", avatarUrl: "/abij.png", name: "@abhinavmahajanlife" },
   { id: "4", title: "Card 4", subtitle: "Subtitle 4", videoUrl: "/ash.mp4", avatarUrl: "/gay.webP", name: "@ashvinshibu" },
 ];
 
@@ -82,13 +82,13 @@ const VideoCard: React.FC<{
         </button>
 
         {/* Avatar and name inside the video card */}
-        <div className="absolute bottom-5 left-5 flex items-center space-x-3 bg-black bg-opacity-60 p-2 rounded-lg">
+        <div className="absolute bottom-5 left-1 flex items-center space-x-1 bg-black bg-opacity-60  rounded-lg">
           <img
             src={item.avatarUrl}
             alt={item.name}
-            className="w-10 h-10 rounded-full object-cover border-2 border-white"
+            className="w-8 h-8 rounded-full object-cover border-2 border-white"
           />
-          <span className="text-white text-base font-semibold">{item.name}</span>
+          <span className="text-white text-xs md:text-lg lg:text-base font-light">{item.name}</span>
         </div>
       </motion.div>
     </div>

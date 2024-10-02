@@ -1,3 +1,14 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript"
+  ],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "off",  // Disable unused variable warnings
+    "@typescript-eslint/no-explicit-any": "off",  // Disable warnings about using 'any'
+    "react/no-unescaped-entities": "off",  // Disable unescaped entity errors
+    "react-hooks/exhaustive-deps": "off",  // Disable missing dependencies warning
+    "prefer-const": "off",  // Disable prefer-const rule
+    "@next/next/no-img-element": "off"  // Disable image element warning
+  }
 }

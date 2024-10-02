@@ -12,7 +12,7 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     name: "@abhinavmahajanlife",
-    avatar: "/abinav.webP",
+    avatar: "/abij.png",
     profileUrl: "https://www.instagram.com/abhinavmahajanlife",
   },
   {

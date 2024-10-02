@@ -6,15 +6,12 @@ import { BackgroundGradientAnimation } from "@/components/Background";
 import { BackgroundBeams } from "@/components/background-beams";
 import { Component } from "@/components/Charts";
 import { HeroHighlightDemo } from "@/components/HeroHighlightdemo"; 
-import { InfiniteMovingCardsDemo } from "@/components/Movingcard";
 import { FloatingNavDemo } from "@/components/Navbardemo";
 import Testimonials from "@/components/Testimonals"; // Corrected spelling
 import { TimelineDemo } from "@/components/TImelineDemo";
-import { CardHoverEffectDemo } from "@/components/CardHoverEffect";
 import { FeaturesSectionDemo } from "@/components/Services";
 import { BackgroundGradientDemo } from "@/components/Calendly";
 import Footer from "@/components/Footer";
-import { ThreeDCardDemo } from "@/components/ThreeDcarddemo";
 import React from "react";
 
 const HomePage: FC = () => {

@@ -13,7 +13,7 @@ interface VideoItem {
 const videoItems: VideoItem[] = [
   {
     id: '1',
-    videoUrl: '/reels.mp4',
+    videoUrl: '/abi.mp4',
   },
   {
     id: '2',
@@ -37,7 +37,7 @@ const ClientVideoSection: React.FC = () => {
           followers="3M Followers"
           text="Luminary lines significantly boosted my online presence, achieving impressive growth across all platforms. Highly recommend!"
           stats={["300 million views generated", "2.19 million YouTube subscribers", "100+ Videos edited"]}
-          avatar="/abinav.webP" // Updated unique avatar for Abhinav Mahajan Life
+          avatar="/abij.png" // Updated unique avatar for Abhinav Mahajan Life
         />
         <VideoCard item={videoItems[0]} />
       </div>

@@ -2,7 +2,7 @@ import { withSentryConfig } from '@sentry/nextjs';
 
 const nextConfig = {
   // Enabling TypeScript support and export option
-  output: 'export',
+  // output: 'export',
   typescript: {
     // Ignore build errors
     ignoreBuildErrors: true,
