@@ -5,14 +5,14 @@ import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 
 export const BackgroundGradientAnimation = ({
-  gradientBackgroundStart = "rgb(0, 0, 40)", // Black
+  gradientBackgroundStart = "rgb(0, 0, 60)", // Black
   gradientBackgroundEnd = "rgb(0, 0, 0)",   // Black
-  firstColor = "135, 206, 235",             // SkyBlue
-  secondColor = "70, 130, 180",              // SteelBlue
-  thirdColor = "30, 144, 255",               // DodgerBlue
-  fourthColor = "70, 130, 180",              // SteelBlue
-  fifthColor = "0, 0, 139",                  // DarkBlue
-  pointerColor = "0, 255, 255",              // Cyan
+  firstColor = "0, 51, 51",                  // Very dark cyan
+  secondColor = "0, 101, 102",                // Dark blue
+  thirdColor = "0, 0, 76",                  // Darker blue
+  fourthColor = "0, 100, 20",                 // Much darker blue
+  fifthColor = "0, 0, 100",                   // Very dark navy
+  pointerColor = "0, 20, 51",               // Light blue
   size = "80%",
   blendingValue = "hard-light",
   children,

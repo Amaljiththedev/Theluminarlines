@@ -35,7 +35,7 @@ const ClientVideoSection: React.FC = () => {
       <TestimonialCard
           name="Abhinav Mahajan"
           followers="3M Followers"
-          text="“Luminary lines significantly boosted my online presence, achieving impressive growth across all platforms. Highly recommend!”"
+          text="Luminary lines significantly boosted my online presence, achieving impressive growth across all platforms. Highly recommend!"
           stats={["300 million views generated", "2.19 million YouTube subscribers", "100+ Videos edited"]}
           avatar="/abinav.webP" // Updated unique avatar for Abhinav Mahajan Life
         />
@@ -47,7 +47,7 @@ const ClientVideoSection: React.FC = () => {
       <TestimonialCard
           name="Nipun Fitness"
           followers="400k Followers"
-          text="“Working with this team has transformed my content strategy and engagement. Highly recommend their services!”"
+          text="cWorking with this team has transformed my content strategy and engagement. Highly recommend their services!"
           stats={["100 million+ views generated", "100+ videos edited"]}
           avatar="/nipun.webP" // Updated unique avatar for Nipun Fitness
         />
