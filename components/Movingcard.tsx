@@ -1,7 +1,7 @@
-"use client";
-
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { InfiniteMovingCards } from "./infinite-moving-cards";
+import { db } from "../app/firebaseConfig"; // Adjust the path as necessary
+import { collection, getDocs } from "firebase/firestore";
 
 interface Testimonial {
   name: string;
@@ -9,35 +9,40 @@ interface Testimonial {
   profileUrl: string;
 }
 
-const testimonials: Testimonial[] = [
-  {
-    name: "@abhinavmahajanlife",
-    avatar: "/images/abij.png",
-    profileUrl: "https://www.instagram.com/abhinavmahajanlife",
-  },
-  {
-    name: "@nipunfitness",
-    avatar: "/images/nipun.webP",
-    profileUrl: "https://www.instagram.com/nipunfitness",
-  },
-  {
-    name: "@ajmal_fitlife",
-    avatar: "/images/almen.webP",
-    profileUrl: "https://www.instagram.com/ajmal_fitlife",
-  },
-  {
-    name: "@_triedbutfailed",
-    avatar: "/images/trie.webP",
-    profileUrl: "https://www.instagram.com/_triedbutfailed",
-  },
-  {
-    name: "@ashvinshibu",
-    avatar: "/images/g.webP",
-    profileUrl: "https://www.youtube.com/@ashvinshibu",
-  },
-];
-
 export function InfiniteMovingCardsDemo() {
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "Testimonals"));
+        const testimonialsData: Testimonial[] = [];
+        
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          testimonialsData.push({
+            name: data.name,
+            avatar: data.avatar,
+            profileUrl: data.profileUrl,
+          });
+        });
+
+        setTestimonials(testimonialsData);
+      } catch (error) {
+        console.error("Error fetching testimonials:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTestimonials();
+  }, []);
+
+  if (loading) {
+    return <p>Loading testimonials...</p>; // Optional loading state
+  }
+
   return (
     <div className="h-[25rem] rounded-md flex flex-col items-center justify-center relative overflow-hidden">
       <p className="flex justify-center text-white font-medium text-sm mb-6">

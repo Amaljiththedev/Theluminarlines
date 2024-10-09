@@ -1,20 +1,23 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 const svgToDataUri = require("mini-svg-data-uri");
 const colors = require("tailwindcss/colors");
-const { default: flattenColorPalette } = require("tailwindcss/lib/util/flattenColorPalette");
+const {
+  default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
 
 /** @type {import('tailwindcss').Config} */
-const config = {
+module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/**/*.{ts,tsx}",
   ],
-  darkMode: ["class", "class"], // Enable dark mode
+  darkMode: "class", // Enable dark mode
   theme: {
     extend: {
       animation: {
+        aurora: "aurora 60s linear infinite",
         marquee: 'marquee var(--duration) linear infinite',
         'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
         shimmer: 'shimmer 2s linear infinite',
@@ -27,62 +30,70 @@ const config = {
           "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
       },
       keyframes: {
-        marquee: {
+        aurora: {
           from: {
-            transform: 'translateX(0)'
+            backgroundPosition: "50% 50%, 50% 50%",
           },
           to: {
-            transform: 'translateX(calc(-100% - var(--gap)))'
-          }
+            backgroundPosition: "350% 50%, 350% 50%",
+          },
+        },
+        marquee: {
+          from: {
+            transform: 'translateX(0)',
+          },
+          to: {
+            transform: 'translateX(calc(-100% - var(--gap)))',
+          },
         },
         'marquee-vertical': {
           from: {
-            transform: 'translateY(0)'
+            transform: 'translateY(0)',
           },
           to: {
-            transform: 'translateY(calc(-100% - var(--gap)))'
-          }
+            transform: 'translateY(calc(-100% - var(--gap)))',
+          },
         },
         shimmer: {
           from: {
-            backgroundPosition: '0 0'
+            backgroundPosition: '0 0',
           },
           to: {
-            backgroundPosition: '-200% 0'
-          }
+            backgroundPosition: '-200% 0',
+          },
         },
         moveHorizontal: {
           '0%': {
-            transform: 'translateX(-50%) translateY(-10%)'
+            transform: 'translateX(-50%) translateY(-10%)',
           },
           '50%': {
-            transform: 'translateX(50%) translateY(10%)'
+            transform: 'translateX(50%) translateY(10%)',
           },
           '100%': {
-            transform: 'translateX(-50%) translateY(-10%)'
-          }
+            transform: 'translateX(-50%) translateY(-10%)',
+          },
         },
         moveInCircle: {
           '0%': {
-            transform: 'rotate(0deg)'
+            transform: 'rotate(0deg)',
           },
           '50%': {
-            transform: 'rotate(180deg)'
+            transform: 'rotate(180deg)',
           },
           '100%': {
-            transform: 'rotate(360deg)'
-          }
+            transform: 'rotate(360deg)',
+          },
         },
         moveVertical: {
           '0%': {
-            transform: 'translateY(-50%)'
+            transform: 'translateY(-50%)',
           },
           '50%': {
-            transform: 'translateY(50%)'
+            transform: 'translateY(50%)',
           },
           '100%': {
-            transform: 'translateY(-50%)'
-          }
+            transform: 'translateY(-50%)',
+          },
         },
         scroll: {
           to: {
@@ -95,31 +106,31 @@ const config = {
         foreground: 'hsl(var(--foreground))',
         card: {
           DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))'
+          foreground: 'hsl(var(--card-foreground))',
         },
         popover: {
           DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))'
+          foreground: 'hsl(var(--popover-foreground))',
         },
         primary: {
           DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))'
+          foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))'
+          foreground: 'hsl(var(--secondary-foreground))',
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))'
+          foreground: 'hsl(var(--muted-foreground))',
         },
         accent: {
           DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))'
+          foreground: 'hsl(var(--accent-foreground))',
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))'
+          foreground: 'hsl(var(--destructive-foreground))',
         },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -129,15 +140,15 @@ const config = {
           '2': 'hsl(var(--chart-2))',
           '3': 'hsl(var(--chart-3))',
           '4': 'hsl(var(--chart-4))',
-          '5': 'hsl(var(--chart-5))'
-        }
+          '5': 'hsl(var(--chart-5))',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)'
-      }
-    }
+        sm: 'calc(var(--radius) - 4px)',
+      },
+    },
   },
   plugins: [
     addVariablesForColors, // Add color variables to root
@@ -191,5 +202,3 @@ function addVariablesForColors({ addBase, theme }) {
     ":root": variables,
   });
 }
-
-module.exports = config;

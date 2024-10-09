@@ -31,6 +31,8 @@ const chartData = [
   { month: "August", views: 19765432 },
   { month: "September", views: 20000000 },
   { month: "October", views: 21123456 }, // This month may be adjusted
+  // { month: "October", views: 21123456 }, // This month may be adjusted
+  // { month: "October", views: 21123456 }, // This month may be adjusted
 ]
 const chartConfig = {
   Views: {

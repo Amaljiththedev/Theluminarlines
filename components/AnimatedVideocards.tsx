@@ -1,25 +1,34 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { IconSpeakerphone } from "@tabler/icons-react";
+import { collection, getDocs } from "firebase/firestore"; // Firestore imports
+import { db } from "../app/firebaseConfig"; // Firebase config
 
 interface VideoItem {
   id: string;
   title: string;
   subtitle: string;
   videoUrl: string;
-  avatarUrl: string; // Avatar image
-  name: string; // Person's name
+  avatarUrl: string;
+  name: string;
 }
 
-const items: VideoItem[] = [
-  { id: "1", title: "Card 1", subtitle: "Subtitle 1", videoUrl: "/videos/reels.mp4", avatarUrl: "/images/nipun.webP", name: "@nipunfitness" },
-  { id: "2", title: "Card 2", subtitle: "Subtitle 2", videoUrl: "/videos/trie.mp4", avatarUrl: "/images/trie.webP", name: "@_triedbutfailed" },
-  { id: "3", title: "Card 3", subtitle: "Subtitle 3", videoUrl: "/videos/abhinav.mp4", avatarUrl: "/images/abij.png", name: "@abhinavmahajanlife" },
-  { id: "4", title: "Card 4", subtitle: "Subtitle 4", videoUrl: "/videos/ash.mp4", avatarUrl: "/images/g.webP", name: "@ashvinshibu" },
-];
-
 const AnimatedVideoCards: React.FC = () => {
+  const [videoItems, setVideoItems] = useState<VideoItem[]>([]);
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      const querySnapshot = await getDocs(collection(db, "videos")); // Fetch videos from Firestore
+      const items: VideoItem[] = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      })) as VideoItem[];
+      setVideoItems(items);
+    };
+
+    fetchVideos();
+  }, []);
 
   const handleToggleMute = (id: string) => {
     setActiveVideoId((prev) => (prev === id ? null : id));
@@ -32,7 +41,7 @@ const AnimatedVideoCards: React.FC = () => {
       </h2>
 
       <div className="grid grid-cols-1 bg-black z-50 sm:grid-cols-2 md:grid-cols-4 gap-10 w-full max-w-7xl">
-        {items.map((item) => (
+        {videoItems.map((item) => (
           <VideoCard
             key={item.id}
             item={item}
@@ -81,8 +90,7 @@ const VideoCard: React.FC<{
           {isMuted ? <IconSpeakerphone size={24} /> : "Mute"}
         </button>
 
-        {/* Avatar and name inside the video card */}
-        <div className="absolute bottom-5 left-1 flex items-center space-x-1 bg-black bg-opacity-60  rounded-lg">
+        <div className="absolute bottom-5 left-1 flex items-center space-x-1 bg-black bg-opacity-60 rounded-lg">
           <img
             src={item.avatarUrl}
             alt={item.name}

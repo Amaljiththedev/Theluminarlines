@@ -1,7 +1,9 @@
 "use client";
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { IconSpeakerphone } from '@tabler/icons-react';
+import { db } from '../app/firebaseConfig'; // Import your firebase configuration
+import { collection, getDocs } from 'firebase/firestore';
 
 // Video item interface
 interface VideoItem {
@@ -9,20 +11,25 @@ interface VideoItem {
   videoUrl: string;
 }
 
-// Video data
-const videoItems: VideoItem[] = [
-  {
-    id: '1',
-    videoUrl: '/videos/abi.mp4',
-  },
-  {
-    id: '2',
-    videoUrl: '/videos/reels.mp4',
-  },
-];
-
 // Testimonial and Client Video Combined Component
 const ClientVideoSection: React.FC = () => {
+  const [videoItems, setVideoItems] = useState<VideoItem[]>([]);
+  
+  // Fetch video URLs from Firebase
+  useEffect(() => {
+    const fetchVideos = async () => {
+      const videoCollection = collection(db, 'video_testimonials'); // Ensure this matches your Firestore collection
+      const videoSnapshot = await getDocs(videoCollection);
+      const videoList = videoSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        videoUrl: doc.data().videoUrl, // Ensure this matches the field name in your Firestore
+      }));
+      setVideoItems(videoList);
+    };
+
+    fetchVideos();
+  }, []);
+
   return (
     <div className="flex flex-col space-y-16 w-full max-w-7xl p-4">
       {/* Main Heading */}
@@ -32,26 +39,26 @@ const ClientVideoSection: React.FC = () => {
 
       {/* First Section: Testimonial on the left, Video on the right */}
       <div className="flex flex-col md:flex-row items-center justify-between w-full space-y-8 md:space-y-0 md:space-x-8">
-      <TestimonialCard
+        <TestimonialCard
           name="Abhinav Mahajan"
           followers="3M Followers"
           text="Luminary lines significantly boosted my online presence, achieving impressive growth across all platforms. Highly recommend!"
           stats={["300 million views generated", "2.19 million YouTube subscribers", "100+ Videos edited"]}
           avatar="/images/abij.png" // Updated unique avatar for Abhinav Mahajan Life
         />
-        <VideoCard item={videoItems[0]} />
+        {videoItems.length > 0 && <VideoCard item={videoItems[0]} />}
       </div>
 
       {/* Second Section: Video on the left, Testimonial on the right */}
       <div className="flex flex-col md:flex-row-reverse items-center justify-between w-full space-y-8 md:space-y-0 md:space-x-8">
-      <TestimonialCard
+        <TestimonialCard
           name="Nipun Fitness"
           followers="400k Followers"
-          text="cWorking with this team has transformed my content strategy and engagement. Highly recommend their services!"
+          text="Working with this team has transformed my content strategy and engagement. Highly recommend their services!"
           stats={["100 million+ views generated", "100+ videos edited"]}
-          avatar="/images/nipun.webP" // Updated unique avatar for Nipun Fitness
+          avatar="/images/nipun.png" // Updated unique avatar for Nipun Fitness
         />
-        <VideoCard item={videoItems[1]} />
+        {videoItems.length > 1 && <VideoCard item={videoItems[1]} />}
       </div>
     </div>
   );

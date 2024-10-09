@@ -103,7 +103,7 @@ export const InfiniteMovingCards = ({
               className="flex flex-row items-center"
             >
               <img
-                srcSet={`${item.avatar}?w=40 40w, ${item.avatar}?w=80 80w`} // Responsive image sources
+                srcSet={item.avatar} // Responsive image sources
                 sizes="(max-width: 40px) 40px, (max-width: 80px) 80px" // Image size for different screens
                 alt={`Avatar of ${item.name}`}
                 className="w-10 h-10 rounded-full mr-3"
